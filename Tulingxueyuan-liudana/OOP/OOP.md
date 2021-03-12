@@ -156,7 +156,7 @@
     class B():
         name = "jack"
         age = 90
-    
+  
     a = A()
     此时  系统会把a作为第一个参数传进函数
     a.say()
