@@ -139,7 +139,7 @@
 
 
 
-    # 关于self的案例
+    关于self的案例
 
     class A():
         name = "wanyix"
