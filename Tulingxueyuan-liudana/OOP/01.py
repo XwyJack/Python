@@ -37,5 +37,6 @@ wanyix = PythonStudent()
 print(wanyix.name)
 print(wanyix.age)
 
+
 # 注意  成员函数的调用没有传递进参数
 wanyix.doHomework()
