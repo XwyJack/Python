@@ -132,14 +132,15 @@
     t = Teacher()
 
     t.say()
-    # 调用绑定类函数使用类名
-    #t.sayAgain()  #  TypeError: sayAgain() takes 0 positional arguments but 1 was given
+    调用绑定类函数使用类名
+    t.sayAgain()  #  TypeError: sayAgain() takes 0 positional arguments but 1 was given
     Teacher.sayAgain()
 
 
 
 
     关于self的案例
+
 
     class A():
         name = "wanyix"
@@ -160,7 +161,7 @@
     此时  系统会把a作为第一个参数传进函数
     a.say()
 
-    # 此时，slef被a替换
+    此时，slef被a替换
     A.say(a)
 
     同样可以把A作为参数传入
