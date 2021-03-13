@@ -112,8 +112,10 @@
 - self并不是关键字，只是一个用于接收对象的普通参数，理论上可以用任何一个普通变量名代替
 - 方法中有self形参的方法为非绑定类方法，可以通过对象访问，没有slef的时绑定类方法，只能通过类访问
 - 使用类访问绑定类的方法时，如果类方法中需要访问当前类的成员，可以通过__class__成员来访问
+
+
     
-    
+    '''python
     class Teacher():
     name = "wanyix"
     age = 29
@@ -135,7 +137,12 @@
     调用绑定类函数使用类名
     t.sayAgain()  #  TypeError: sayAgain() takes 0 positional arguments but 1 was given
     Teacher.sayAgain()
-   
+    '''
+    
+    
+    
+    
+    
     关于self的案例
     class A():
         name = "wanyix"
