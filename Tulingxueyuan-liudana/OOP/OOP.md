@@ -79,7 +79,7 @@
     如果对象中有此成员，一定使用对象中的成员
 - 创建对象的时候，类中的成员不会放入对象中，而是得到一个空对象，没有成员
         
-        ##此时  A成为类实例 
+        ##此时,A成为类实例 
         
         print(A.name)
         print(A.age)
@@ -124,7 +124,7 @@
             self.name = "liuyijue"
             self.age = 28
             print("My name is {0}".format(self.name))
-            # 调用类的成员变量需要使用__class__
+            #调用类的成员变量需要使用__class__
             print("My age is {0}".format(__class__.age))
         def sayAgain():
             print(__class__.name)
@@ -134,7 +134,7 @@
         t = Teacher()
 
         t.say()
-        调用绑定类函数使用类名
+        #调用绑定类函数使用类名
         t.sayAgain()  #  TypeError: sayAgain() takes 0 positional arguments but 1 was given
         Teacher.sayAgain()
     
@@ -143,35 +143,35 @@
     
     
     
-    关于self的案例
-    class A():
-        name = "wanyix"
-        age = 29
+        #关于self的案例
+        class A():
+            name = "wanyix"
+            age = 29
     
-        def __init__(self):
-            self.name = "liuyijue"
-            self.age = 28
-        def say(self):
-            print(self.name)
-            print(self.age)
+            def __init__(self):
+                self.name = "liuyijue"
+                self.age = 28
+            def say(self):
+                print(self.name)
+                print(self.age)
         
-    class B():
-        name = "jack"
-        age = 90
+        class B():
+            name = "jack"
+            age = 90
   
-    a = A() # 此时  系统会把a作为第一个参数传进函数
-    a.say()
+        a = A() #此时  系统会把a作为第一个参数传进函数
+        a.say()
 
-    此时，slef被a替换
-    A.say(a)
+        #此时，slef被a替换
+        A.say(a)
 
-    同样可以把A作为参数传入
-    A.say(A)  # 此时会去拿类属性
+        #同样可以把A作为参数传入
+        A.say(A)  # 此时会去拿类属性
 
-    此时，传入的类实例是B  因为B具有name和age属性  所以不会报错
-    A.say(B)
+        #此时，传入的类实例是B  因为B具有name和age属性  所以不会报错
+        A.say(B)
 
-    以上代码，利用了鸭子模型
+        #以上代码，利用了鸭子模型
 
 
 # 6. 面向对象的三大特性
