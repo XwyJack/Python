@@ -135,13 +135,8 @@
     调用绑定类函数使用类名
     t.sayAgain()  #  TypeError: sayAgain() takes 0 positional arguments but 1 was given
     Teacher.sayAgain()
-
-
-
-
+   
     关于self的案例
-
-
     class A():
         name = "wanyix"
         age = 29
@@ -157,8 +152,7 @@
         name = "jack"
         age = 90
   
-    a = A()
-    此时  系统会把a作为第一个参数传进函数
+    a = A() # 此时  系统会把a作为第一个参数传进函数
     a.say()
 
     此时，slef被a替换
@@ -171,6 +165,7 @@
     A.say(B)
 
     以上代码，利用了鸭子模型
+
 
 # 6. 面向对象的三大特性
 - 封装
