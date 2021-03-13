@@ -115,29 +115,29 @@
 
 
     
-    '''python
-    class Teacher():
-    name = "wanyix"
-    age = 29
     
-    def say(self):
-        self.name = "liuyijue"
-        self.age = 28
-        print("My name is {0}".format(self.name))
-        # 调用类的成员变量需要使用__class__
-        print("My age is {0}".format(__class__.age))
-    def sayAgain():
-        print(__class__.name)
-        print(__class__.age)
-        print("See you again")
+        class Teacher():
+        name = "wanyix"
+        age = 29
+    
+        def say(self):
+            self.name = "liuyijue"
+            self.age = 28
+            print("My name is {0}".format(self.name))
+            # 调用类的成员变量需要使用__class__
+            print("My age is {0}".format(__class__.age))
+        def sayAgain():
+            print(__class__.name)
+            print(__class__.age)
+            print("See you again")
         
-    t = Teacher()
+        t = Teacher()
 
-    t.say()
-    调用绑定类函数使用类名
-    t.sayAgain()  #  TypeError: sayAgain() takes 0 positional arguments but 1 was given
-    Teacher.sayAgain()
-    '''
+        t.say()
+        调用绑定类函数使用类名
+        t.sayAgain()  #  TypeError: sayAgain() takes 0 positional arguments but 1 was given
+        Teacher.sayAgain()
+    
     
     
     
