@@ -13,10 +13,49 @@
         
 - 如何使用模块
      - 模块直接导入
+        - 假如模块名称直接以数字开头，需要借助importlib帮助
      - 语法
             
             import module_name
             module_name.function_name
             module_name.class_name
-            
+     - 案例 01，02， p01,p02
+     - import 模块 as 别名
+        - 导入的同时给模块起一个名
+        - 其余用法跟第一种相同
+        - 案例 p03
+     - from module_name import func_name, class_name
+        - 按上述方法有选择性导入
+        - 使用的时候可以直接使用导入的内容，不需要前缀
+        - 案例 p04
+     
+     - from module_name import *
+        - 导入模块所有内容
 
+- ’if __name__ = __main__' 的使用
+    - 可以有效避免模块代码被导入的时候被动执行的问题
+    - 建议所有程序的人口都以此代码为人口
+
+# 2. 模块的搜索路径和存储
+- 什么是模块的搜索路径：
+    - 加载模块的时候，系统会在哪些地方寻找此模块
+- 系统默认的模块搜索路径
+        
+        
+        import sys
+        sys.path 属性可以获取路径列表
+        # 案例p06
+
+- 添加搜索路径
+
+        sys.path.append(dir)
+        
+- 模块的加载顺序
+    1.  先搜索内存中已经加载好的模块
+    2.  搜索python的内置模块
+    3.  搜索sys.path 路径
+    
+    
+# 3. 包
+- 包是一种组织管理代码的方式，包里存放的是模块
+- 
