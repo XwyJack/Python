@@ -55,7 +55,83 @@
     2.  搜索python的内置模块
     3.  搜索sys.path 路径
     
-    
+ 
 # 3. 包
-- 包是一种组织管理代码的方式，包里存放的是模块
-- 
+- 包是一种组织管理代码的方式，包里面存放的是模块
+- 用于将模块包含在一起的文件夹就是包
+- 自定义包的结构
+        
+        |---包
+        |---|--- __init__.py  包的标志文件
+        |---|--- 模块1
+        |---|--- 模块2
+        |---|--- 子包(子文件夹)
+        |---|---|--- __init__.py  包的标志文件
+        |---|---|--- 子包模块1
+        |---|---|--- 子包模块2
+        
+
+- 包的导入操作
+    - import package_name
+        - 直接导入一个包，可以使用__init__.py 中的内容(正常init中的内容是空的)
+        - 使用方式：
+            
+            package_name.func_name
+            package_name.class_name.func_name()
+        - 此种方式的访问内容是：
+        - 案例 pkg01   p07.py
+    - import package_name as p
+        - 具体用法跟作用方式，跟上述简单导入一致
+        - 注意的是此种方法是默认对__init__.py内容的导入
+    - import package.module（把init规避了）
+        - 导入包中某一个具体的模块，
+        - 使用方法
+            
+                package.module.func_name
+                package.module.class.func()
+                package.module.class.var
+            
+        - 案例 p08.py
+        
+    - import package.module as pm
+    
+    - from .... import 导入
+        - from package import module1，module2, modules, .....
+        - 此种方法不执行__init__的内容
+        
+                from pkg01 import p01
+                p01.sayHello()
+        - from package import *
+            - 导入当前包  ’__init__‘ 文件中所有的函数和类
+            - 使用方法
+                    
+                    func_name()
+                    class_name.func_name()
+                    class_name.var
+            - 案例p09.py   注意此种导入的具体内容
+    
+    - from package.module import *
+        - 导入包中指定的模块的所有内容
+        - 使用方法
+        
+                func_name()
+                class_name.func_name()
+                
+- 在开发环境中经常会引用其他模块，可以在当前包中直接导入其他模块中的内容
+    - import 完整的包或者模块的路径
+    
+- __all__‘ 的用法
+    - 在使用from package import  *  的时候，  * 可以导入的内容
+    - ’__init__.py‘中如果文件为空， 或者没有__all__。 那么只可以把'__init__' 中的内容导入
+    - '__init__'如果设置了’__all__‘的值， 那么按照all 指定的子包或者模块进行导入，则不会载入’—__init__‘
+    中的内容
+    - ’__all__ = ['module', 'module2',....]‘
+
+#  命名空间
+- 用于区分不同位置不同功能但是相同名称的函数或者变量的一个特定前缀
+- 作用是防止命名冲突
+        
+        setName()
+        Student.setName()
+        Dog.setName()
+        
