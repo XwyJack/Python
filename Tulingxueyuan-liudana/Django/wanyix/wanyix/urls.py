@@ -29,8 +29,10 @@ urlpatterns = [
     # 嵌套参数
     url(r'^book/(?:page-(?P<pn>\d+)/)$', tv.do_param2),
 
-    #url(r'^yourname/$', tv.extraParam, {"name":"wanyix"}),
+    # url(r'^yourname/$', tv.extraParam, {"name":"wanyix"}),
     # 防止硬编码，用名称alias 代替
+
+
     url(r'^yourname/$', tv.revParse, name = "askname")
 
 ]
