@@ -154,9 +154,87 @@
     - 案例v18   v19
     - 过程比较啰嗦   笔记较少  仔细观察
     
-    r = "" + (new Date).getTime(),
-        i = r + parseInt(10 * Math.random(), 10);
+
+
+- ajax
+    - 异步请求
+    - 一定会有url 请求方法  可能有数据
+    - 一般使用json格式
+    - 豆瓣案例  案例  爬豆瓣电影  v20
     
+
+
+# Requests -献给人类
+- HTTP for Humans  更简洁更友好
+- 继承了urllib的所有特性
+- 底层用的urllib3
+- 开源地址：https://github.com/requests/requests
+- [中文文档](http://docs.python-requests.org/zh_CN/latest/index.html)
+- 安装： conda install requests
+- get请求
+    - requests.get()
+    - requests.request("get",url)
+    - 可以带有headers和params参数
+    - 案例v21
+- get 返回内容
+    - 案例v22
+
+- post
+    - rsp = requests.post(url, data=data)
+    - 案例v23
+    - data   headers要求dict类型  不能使用bytes类型
+    
+- proxy
+    
+        proxy ={
+        "http": "address"
+        "https": "address"
+        }
+        
+        rsp = requests.request("get", "http://xxxxx", proxy=proxy)
+    - 代理有可能报错，如果使用人数多  考虑安全问题  可能会被强行关闭
+    
+
+- 用户验证问题
+    - 代理验证
+    
+            # 可能需要使用HTTP basic Auth ：可以这样
+            # 格式为：  用户名:密码@代理地址:端口
+            proxy = {”http“：”china:123456@192.168.0.1“}
+            rsp = requests.get("http://baidu.com", proxies= proxy)
+            
+            
+- web 客户端验证
+    - 如果遇到web客户端验证  需要添加  auth={用户名：密码}
+        auth={”test“,"123456"}# 授权信息
+        rsp = requests.get("http://baidu.com", auth=auth)        
+        
+    
+
+- cookie
+    - requests可以自动处理cookie信息
+    
+            
+            rsp = requests.get("http://baidu.com")
+            # 如果对方服务器给cookie信息，则可以通过反馈的cookie属性得到
+            
+            # 返回一个cookiejar的实例
+            cookiejar = rsp.cookies
+            
+            # 可以将cooki转换成字典
+            cookiedict = requests.utils.dict_from_cookiejar(cookiejar)
+         
+         
+
+- session
+    - 跟服务上的session不是一个东西
+    - 模拟了一次对话  从客户端浏览器连接到服务器开始，到客户端浏览器关闭
+    - 能让我们跨请求时保持某些参数，比如同一个sessino实例发出的所有请求之间保持cookie
+    
+
+
+
+
 
 
 
