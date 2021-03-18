@@ -160,7 +160,7 @@
     - 异步请求
     - 一定会有url 请求方法  可能有数据
     - 一般使用json格式
-    - 豆瓣案例  案例  爬豆瓣电影  v20
+    - 豆瓣案例  案例    爬豆瓣电影  v20
     
 
 
@@ -224,13 +224,16 @@
             # 可以将cooki转换成字典
             cookiedict = requests.utils.dict_from_cookiejar(cookiejar)
          
-         
+
 
 - session
     - 跟服务上的session不是一个东西
     - 模拟了一次对话  从客户端浏览器连接到服务器开始，到客户端浏览器关闭
     - 能让我们跨请求时保持某些参数，比如同一个sessino实例发出的所有请求之间保持cookie
     
+
+
+
 
 
 
