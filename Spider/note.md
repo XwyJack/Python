@@ -132,7 +132,31 @@
             - expires  过期时间
             - size  大小
             - Http  字段
-       
+    - cookie的保存-FileCookieJar  案例v15
+    
+    - cookie的读取，案例v16
+    
+- SSL
+    - SSL证书就是指遵守SSL安全套接层协议的服务器数字证书，（SecureSocketLayer）
+    - 美国网警公司开发
+    - CA（CertifacateAuthority）是数字证书认证中心，是发放，管理，废除数字证书的手信人的第三方机构
+    - 遇到不信任的SSL证书，需要单独处理   案例v17
+    - 其实目前ssl.create_default_https_context = ssl._create_unverified_context
+    - 已经不适用了  
+    - 可以直接ctx = ssl.create_default_context()
+        ctx.check_hostname = False
+        ctx.verify_mode = ssl.CERT_NONE 这样代替
+        
+- js加密
+    - 有的反爬虫策略采用js对需要传输的数据进行加密处理（通常是md5值）
+    - 加密函数或者过程一定在浏览器完成，也就是一定会把代码（js代码）暴露给使用者
+    - 通过阅读加密算法，就可以模拟除加密过程，从而达到破解
+    - 案例v18   v19
+    - 过程比较啰嗦   笔记较少  仔细观察
+    
+    r = "" + (new Date).getTime(),
+        i = r + parseInt(10 * Math.random(), 10);
+    
 
 
 
