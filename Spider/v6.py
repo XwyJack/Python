@@ -1,4 +1,7 @@
 '''
+任务要求跟v5一样
+本案例只是利用Request来实现v5的内容
+
 利用parse模块模拟post请求
 分析百度词典
 分析步骤
@@ -39,13 +42,19 @@ print(type(data))
 
 headers = {
     # 因为使用post  至少应该包含content-length字段
-    'Content-Length':len(data)
+    'Content-Length': len(data)
 }
 
+# 构造一个Request的实例
 
+req = request.Request(baseurl, data=data, headers=headers)
+
+# 因为已经构造了一个Request类的请求实例， 则所有的请求信息都可以封装在Request实例中
+rsp = request.urlopen(req)
+
+# 下面就不使用了
 # rsp = request.urlopen(baseurl,data = data, headers= headers)
-
-rsp = request.urlopen(baseurl,data = data)
+# rsp = request.urlopen(baseurl,data = data)
 
 
 json_data = rsp.read().decode('utf-8')
