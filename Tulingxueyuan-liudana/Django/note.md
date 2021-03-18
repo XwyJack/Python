@@ -290,6 +290,144 @@
         
         
         
+        
+
+# Models  模型
+
+- 数据结构（数据的结构化存储） + 算法 = 程序
+    - ORM
+        - ObjectRelationMap: 把面向对象思想转换成关系型数据库
+        - 类对应表格
+        - 类中的属性对应表中的字段
+        - 在应用中的models.py文件中定义class
+        - 所有需要使用ORM的class都必须是models.Model的子类
+        - class中的所有属性对应表格中的字段
+        - 字段的类型都必须使用models.xxxx    不能使用python中的类型
+        - 在django中， Models负责跟数据库交互
+- django 连接数据库
+    - 自带默认数据 Sqllite3
+        - 关系型数据库
+        - 轻量级
+    - 建议开发用sqlit3   部署的时候使用mysql之类数据库
+        - 切换数据库在settings中进行设置
+    
+                django 连接 mysql
+                    DATABASES = [ 
+                        'default' = { 
+                            'ENGINE' : 'django.db.backends.mysql', 
+                            'NAME' : '数据库名', 
+                            'PASSWORD': '数据库密码', 
+                            'HOST': '127.0.0.1', 
+                            'PORT': '3306', } ]
+
+        - 需要在项目文件下的__init__文件中导入pymysql包
+
+
+
+# models类的使用
+- 定义数据库表映射的类
+    - 在应用的models.py文件中定义cLass
+    - 在应用中的models.py文件中定义class
+    - 所有需要使用ORM的class都必须是models.Model的子类
+    - class中的所有属性对应表格中的字段
+    - 字段的类型都必须使用models.xxxx    不能使用python中的类型
+- 字段常用参数：
+    1. max_length
+    2. blank
+    3. null
+    4. default
+    5. unique
+    6. verbose_name
+    
+- 数据库的迁移
+    1. 在命令行中，生成数库迁移的语句（生成sql语句）
+        
+        '''
+        python3 manage.py  makemigrations
+        '''    
+    2. 在命令行中， 输入数据库迁移的指令
+    
+        '''
+        python3 manage.py  migrate
+        '''
+        
+        ps: 
+    3.  对于默认数据库， 为了避免出现混乱，如果数据库中没有数据，每次迁移前可以把系统 自带的sqlite3数据库删除
+
+
+## 1. 查看数据库中的数据
+
+            1. 启动命令行 : python3 manage.py shell
+            ps: 注意点: 对orm的操作分为静态函数和非静态函数两种.静态是指在内存中只有一份内容存在,调用的时候使用 类名. 的方式.如果修改了那么所有使用的人都会受影响.
+            2. 在命令行中导入对应的映射类
+	            from 应用.models import 类名
+            3. 使用 objects 属性操作数据库. objects 是 模型中实际和数据库进行交互的 Manager 类的实例化对象.
+            4. 查询命令
+	            - 类名.objects.all() 查询数据库表中的所有内容. 返回的结果是一个QuerySet类型,实际上是类列表中装这个一个一个数据对象.
+	            - 类名.objects.filter(条件) 
+        
+        
+----------------------
+
+            # from 应用名.models import 类名
+            from myapp.models import Student
+
+            # 查询Student表中的所有数据,得到的是一个QuerySet类型
+            Student.objects.all()
+
+            # 如果要取出所有QuerySet类型中的所有数据对象,需要遍历取出所有的对象,再用对象.属性来查看值
+            s = Student.object.all()
+            for each in s:
+	            print(each.name , each.age , each.address , each.phone)
+
+            # 如果要进行过滤筛选,使用filter()方法
+            Student.objects.filter(age=18)
+
+-----------------------
+
+## 2. 添加数据
+
+- 对象 = 类()   # 使用类实例化对象
+- 对象.属性 = 值  # 给对应的对象的属性赋值
+- 对象.save()  # 必须要执行保存操作,否则数据没有进入数据库
+
+- python3 manage.py shell 命令行中添加数据
+
+            # from 应用名.models import 类名
+
+            from myapp.models import Student
+
+            # 实例化对象
+            s = Student()
+            
+            # 给对象的属性赋值
+            s.name = '张三'
+            s.address = '云南昭通'
+            s.phone = '13377886678'
+            s.age = 20
+            
+            # 保存数据
+            s.save()
+            
+- 常见查找方法
+    - 1.通用查找格式: 属性名 _ _ (用下面的内容) =值
+        gt : 大于
+        gte : 大于等于
+        lt : 小于
+        lte : 小于等于
+        range: 范围
+        year : 年份
+        isnull : 是否为空
+    - 2.查找等于指定值的格式: 属性名 = 值
+    - 3.模糊查找: 属性名 _ _ (使用下面的内容) = 值
+        exact : 精确等于
+        iexact: 不区分大小写
+        contains: 包含
+        startwith: 以..开头
+        endwith: 以…结尾 
+        
+        
+# 数据库表关系
 
 
 
